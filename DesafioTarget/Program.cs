@@ -4,21 +4,59 @@ class Program
 {
     static void Main()
     {
-        // Programa 1: Soma dos primeiros N números inteiros
-        CalcularSoma();
+        bool continuar = true;
 
-        // Programa 2: Verificação de pertencimento à sequência de Fibonacci
-        VerificarFibonacci();
+        while (continuar)
+        {
+            Console.Clear();
+            Console.WriteLine("Escolha um programa para executar:");
+            Console.WriteLine("1. Calcular a soma dos primeiros N números inteiros");
+            Console.WriteLine("2. Verificar se um número pertence à sequência de Fibonacci");
+            Console.WriteLine("3. Inverter uma string");
+            Console.WriteLine("4. Calcular a porcentagem de faturamento por estado");
+            Console.WriteLine("5. Sair");
+            Console.Write("Digite o número do programa desejado: ");
 
-        // Programa 5: Inversão de uma string
-        InverterString();
+            int opcao;
+            if (!int.TryParse(Console.ReadLine(), out opcao) || opcao < 1 || opcao > 5)
+            {
+                Console.WriteLine("Opção inválida. Tente novamente.");
+                continue;
+            }
 
-        // Programa 4: Cálculo da porcentagem de faturamento por estado
-        CalcularFaturamentoPorEstado();
+            switch (opcao)
+            {
+                case 1:
+                    ExibirSoma();
+                    break;
+                case 2:
+                    VerificarFibonacci();
+                    break;
+                case 3:
+                    InverterString();
+                    break;
+                case 4:
+                    CalcularFaturamentoPorEstado();
+                    break;
+                case 5:
+                    continuar = false;
+                    Console.WriteLine("Saindo...");
+                    break;
+            }
+
+            if (opcao != 5)
+            {
+                Console.WriteLine("Deseja retornar ao menu principal? (s/n): ");
+                char resposta = Console.ReadKey().KeyChar;
+                if (resposta != 's' && resposta != 'S')
+                {
+                    continuar = false;
+                }
+            }
+        }
     }
 
-    // Programa 1: Soma dos primeiros N números inteiros
-    static void CalcularSoma()
+    static void ExibirSoma()
     {
         int indice = 13;
         int soma = 0;
@@ -30,18 +68,23 @@ class Program
             soma += k;
         }
 
-        Console.WriteLine($"Soma dos primeiros {indice} números inteiros: {soma}");
+        Console.WriteLine($"\nO valor da variável SOMA é: {soma}");
     }
 
-    // Programa 2: Verificação de pertencimento à sequência de Fibonacci
     static void VerificarFibonacci()
     {
-        int num1 = 0; // Primeiro número da sequência
-        int num2 = 1; // Segundo número da sequência
-        int proximoNumero = 0; // Próximo número da sequência
+        int num1 = 0;
+        int num2 = 1;
+        int proximoNumero = 0;
 
         Console.WriteLine("Digite um número inteiro para verificar se pertence à sequência de Fibonacci:");
-        int n = Convert.ToInt32(Console.ReadLine());
+        int n;
+
+        if (!int.TryParse(Console.ReadLine(), out n) || n < 0)
+        {
+            Console.WriteLine("Entrada inválida. O número deve ser um inteiro não negativo.");
+            return;
+        }
 
         if (n == 0 || n == 1)
         {
@@ -66,7 +109,6 @@ class Program
         }
     }
 
-    // Programa 5: Inversão de uma string
     static void InverterString()
     {
         Console.WriteLine("Digite uma string para ser invertida:");
@@ -88,7 +130,6 @@ class Program
         return new string(inverted);
     }
 
-    // Programa 4: Cálculo da porcentagem de faturamento por estado
     static void CalcularFaturamentoPorEstado()
     {
         double sp = 67836.43;
@@ -105,7 +146,7 @@ class Program
         double porcentagemES = (es / totalFaturamento) * 100;
         double porcentagemOutros = (outros / totalFaturamento) * 100;
 
-        Console.WriteLine("Faturamento mensal por estado:");
+        Console.WriteLine("\nFaturamento mensal por estado:");
         Console.WriteLine($"SP: R${sp:F2} - {porcentagemSP:F2}%");
         Console.WriteLine($"RJ: R${rj:F2} - {porcentagemRJ:F2}%");
         Console.WriteLine($"MG: R${mg:F2} - {porcentagemMG:F2}%");
