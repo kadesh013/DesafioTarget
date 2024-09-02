@@ -12,3 +12,4 @@ C:\Users\paulo\source\repos\DesafioTarget\DesafioTarget\obj\Debug\net8.0\refint\
 C:\Users\paulo\source\repos\DesafioTarget\DesafioTarget\obj\Debug\net8.0\DesafioTarget.pdb
 C:\Users\paulo\source\repos\DesafioTarget\DesafioTarget\obj\Debug\net8.0\DesafioTarget.genruntimeconfig.cache
 C:\Users\paulo\source\repos\DesafioTarget\DesafioTarget\obj\Debug\net8.0\ref\DesafioTarget.dll
+C:\Users\paulo\source\repos\DesafioTarget\DesafioTarget\obj\Debug\net8.0\DesafioTarget.sourcelink.json
